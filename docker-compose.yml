@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  webhook-tester:
+    build: .
+    container_name: wag-webhook-tester
+    ports:
+      - "3000:3000"
+    volumes:
+      - webhook-data:/usr/src/app/data
+    environment:
+      - PORT=3000
+    restart: unless-stopped
+
+volumes:
+  webhook-data:
+    driver: local
